@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sftpgo
+  labels:
+    app: sftpgo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sftpgo
+  template: 
+    metadata:
+      labels:
+        app: sftpgo
+    spec:
+      containers: # List
+      - image: drakkan/sftpgo:v2.5.4 # Use the appropriate SFTPGo image version
+        name: sftpgo
+        ports:
+        - containerPort: 8080
+        - containerPort: 2022
